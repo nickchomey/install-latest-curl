@@ -14,9 +14,11 @@ curl_folder_name=$(basename $latest_curl_version .tar.gz)
 cd $curl_folder_name
 
 # Configure, compile, and install
-./configure --with-openssl --prefix=/usr
+./configure --with-openssl
 make
 sudo make install
+mv /usr/bin/curl /usr/bin/curl.bak
+cp /usr/local/bin/curl /usr/bin/curl
 ldconfig
 
 # Cleanup
