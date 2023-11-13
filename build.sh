@@ -14,7 +14,7 @@ curl_folder_name=$(basename $latest_curl_version .tar.gz)
 cd $curl_folder_name
 
 # Configure, compile, and install
-./configure --with-openssl
+./configure --with-openssl --prefix=/usr
 make
 sudo make install
 
