@@ -15,11 +15,11 @@ cd $curl_folder_name
 
 # Configure, compile, and install
 ./configure --with-openssl
-make
+sudo make
 sudo make install
 mv /usr/bin/curl /usr/bin/curl.bak
 cp /usr/local/bin/curl /usr/bin/curl
-ldconfig
+sudo ldconfig
 
 # Cleanup
 cd ..
