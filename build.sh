@@ -5,7 +5,7 @@ sudo apt-get update
 sudo apt-get install -y build-essential libssl-dev libcurl4-openssl-dev gnupg
 
 # Download and extract the latest version of curl
-latest_curl_version=$(curl -s https://curl.haxx.se/download/ | grep -o 'curl-[0-9.]*.tar.gz' | head -n 1)
+latest_curl_version=$(curl -s https://curl.se/download/ | grep -o 'curl-[0-9.]*.tar.gz' | head -n 1)
 curl -LO https://curl.haxx.se/download/$latest_curl_version
 curl -LO https://curl.haxx.se/download/$latest_curl_version.asc
 
