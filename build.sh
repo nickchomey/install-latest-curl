@@ -13,12 +13,13 @@ tar -xzf $latest_curl_version
 curl_folder_name=$(basename $latest_curl_version .tar.gz)
 cd $curl_folder_name
 
+prefix="/usr/"
 # Configure, compile, and install
-./configure --with-openssl
+./configure --build='\`dpkg-architecture -qDEB_BUILD_GNU_TYPE\` '--prefix=${prefix}' '--includedir=${prefix}/include' '--mandir=${prefix}/share/man' '--infodir=${prefix}/share/info' '--sysconfdir=/etc' '--localstatedir=/var' '--disable-option-checking' '--disable-silent-rules' '--libdir=${prefix}/lib/'\`dpkg-architecture -qDEB_HOST_MULTIARCH\` '--runstatedir=/run' '--disable-maintainer-mode' '--disable-dependency-tracking' '--disable-symbol-hiding' '--enable-versioned-symbols' '--enable-threaded-resolver' '--with-lber-lib=lber' '--with-gssapi=/usr' '--with-nghttp2' '--includedir=/usr/include/'\`dpkg-architecture -qDEB_HOST_MULTIARCH\` '--with-zsh-functions-dir=/usr/share/zsh/vendor-completions' '--with-libssh' '--without-libssh2' '--with-openssl' '--with-ca-path=/etc/ssl/certs' '--with-ca-bundle=/etc/ssl/certs/ca-certificates.crt' 'build_alias='\`dpkg-architecture -qDEB_BUILD_GNU_TYPE\` 'CFLAGS=-g -O2  -flto=auto -ffat-lto-objects -flto=auto -ffat-lto-objects -fstack-protector-strong -Wformat -Werror=format-security' 'LDFLAGS=-Wl,-Bsymbolic-functions -flto=auto -ffat-lto-objects -flto=auto -Wl,-z,relro -Wl,-z,now' 'CPPFLAGS=-Wdate-time -D_FORTIFY_SOURCE=2
 sudo make
 sudo make install
-mv /usr/bin/curl /usr/bin/curl.bak
-cp /usr/local/bin/curl /usr/bin/curl
+#mv /usr/bin/curl /usr/bin/curl.bak
+#mv /usr/local/bin/curl /usr/bin/curl
 sudo ldconfig
 
 # Cleanup
