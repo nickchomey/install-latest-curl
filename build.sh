@@ -17,6 +17,7 @@ cd $curl_folder_name
 ./configure --with-openssl --prefix=/usr
 make
 sudo make install
+ldconfig
 
 # Cleanup
 cd ..
